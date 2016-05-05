@@ -5,8 +5,9 @@
 *Db.properties
 *Db.script
 
-# Build diretctory
+# build and out directory
 build
+out
 
 # Gradle files
 .gradle
@@ -16,3 +17,5 @@ gradlew*
 # Intellij files
 *.iml
 .idea
+
+
