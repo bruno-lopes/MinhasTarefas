@@ -10,6 +10,9 @@ build
 
 # Gradle files
 .gradle
+gradle
+gradlew*
 
 # Intellij files
 *.iml
+.idea
