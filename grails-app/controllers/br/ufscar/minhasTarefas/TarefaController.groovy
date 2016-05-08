@@ -14,7 +14,7 @@ class TarefaController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def idLista = params.long('idLista')
-        def concluidas = params.boolean('concluidas')
+        def concluidas = params.concluidas?params.boolean('concluidas'):null
 
         def listaTarefas = Tarefa.withCriteria(params) {
             if (idLista) {
