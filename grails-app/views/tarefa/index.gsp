@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:g="http://www.w3.org/1999/html">
     <head>
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'tarefa.label', default: 'Tarefa')}" />
@@ -15,6 +15,22 @@
         </div>
         <div id="list-tarefa" class="content scaffold-list" role="main">
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+            <g:form>
+                <g:select id="filtro-lista" name="idLista" from="${listasDisponiveis}"
+                          optionKey="id" optionValue="nome"
+                          noSelection="['':'Selecione uma lista']"
+                          value="${filtroLista}"/>
+                <g:select id="filtro-concluidas" name="concluidas" from="${
+                [
+                        ['value': 'Abertas', key: false],
+                        ['value': 'Concluídas', key: true]
+                ]
+                }"
+                          optionKey="key" optionValue="value" value="${filtroConcluidas}"
+                noSelection="['':'Todas']"/>
+                <g:submitButton id="filtrar" name="filtrar" value="Filtrar"/>
+            </g:form>
+
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>

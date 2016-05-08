@@ -22,7 +22,8 @@ class TarefaController {
             }
 
         }
-        respond listaTarefas, model:[tarefaCount: listaTarefas.size]
+        respond listaTarefas, model:[tarefaCount: listaTarefas.size, listasDisponiveis: ListaTarefa.all,
+        filtroConcluidas: concluidas, filtroLista: idLista]
     }
 
     def show(Tarefa tarefa) {
