@@ -10,7 +10,19 @@ class TarefaController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Tarefa.list(params), model:[tarefaCount: Tarefa.count()]
+        def idLista = params.long('idLista')
+        def concluidas = params.boolean('concluidas')
+
+        def listaTarefas = Tarefa.withCriteria(params) {
+            if (idLista) {
+                eq('lista.id', idLista)
+            }
+            if (concluidas != null) {
+                eq('concluida', concluidas)
+            }
+
+        }
+        respond listaTarefas, model:[tarefaCount: listaTarefas.size]
     }
 
     def show(Tarefa tarefa) {
