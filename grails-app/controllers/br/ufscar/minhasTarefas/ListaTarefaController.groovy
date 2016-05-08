@@ -1,9 +1,12 @@
 package br.ufscar.minhasTarefas
 
-import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+import static org.springframework.http.HttpStatus.*
+import grails.plugin.springsecurity.annotation.Secured
+
 @Transactional(readOnly = true)
+@Secured(['ROLE_GERENCIAR_LISTAS', 'ROLE_ADMIN'])
 class ListaTarefaController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
