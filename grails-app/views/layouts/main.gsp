@@ -31,6 +31,23 @@
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <sec:ifLoggedIn>
+                            <g:form controller="logout">
+                            Usuário <sec:username />: (<g:submitButton name="Logout"/>)
+                            </g:form>
+                        </sec:ifLoggedIn>
+                        <sec:ifNotLoggedIn>
+                            <g:link controller="login">Login</g:link>
+                        </sec:ifNotLoggedIn>
+
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
+
+                <ul class="nav navbar-nav navbar-right">
                     <g:pageProperty name="page.nav" />
                 </ul>
             </div>
